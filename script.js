@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function handleCellClick(index) {
 
         const div = document.createElement("div");
+		div.className = "message"
       if (!gameActive || board[index] !== '') return;
   
       board[index] = currentPlayer === player1Input.value ? 'X' : 'O';
