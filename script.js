@@ -1,10 +1,10 @@
-//your JS code here. If required.
 document.addEventListener('DOMContentLoaded', function () {
     const player1Input = document.getElementById('player1');
     const player2Input = document.getElementById('player2');
     const submitButton = document.getElementById('submit');
     const container = document.querySelector(".container");
     const table = document.querySelector('.table');
+    const msg = document.querySelector('.message');
     const boardSize = 3;
     let currentPlayer;
     let board = ['', '', '', '', '', '', '', '', ''];
@@ -45,16 +45,18 @@ document.addEventListener('DOMContentLoaded', function () {
   
     function handleCellClick(index) {
 
-        const div = document.createElement("div");
-		div.className = "message"
+        
+
+      
       if (!gameActive || board[index] !== '') return;
   
       board[index] = currentPlayer === player1Input.value ? 'X' : 'O';
       renderBoard();
   
       if (checkWinner()) {
-        div.innerText = `${currentPlayer}, congratulations, you won!`;
-        container.append(div,table)
+        msg.classList.remove("hide")
+        msg.innerText = `${currentPlayer}, congratulations, you won!`;
+
         gameActive = false;
       } else if (board.every(cell => cell !== '')) {
         alert('It\'s a draw!');
